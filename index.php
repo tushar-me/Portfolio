@@ -1,3 +1,7 @@
+
+<?php
+    include 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,36 +22,91 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 </head>
 <body>
-    <section id="header">
+    <section id="home">
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
         <div class="header-content">
+            <!----- Nav links  ------>
             <div class="left-content">
                 <a href="index.html"><h1>T</h1></a>
                 <ul id="nav-links">
-                    <li><a href="#header" class="home active"><i class="fa-solid fa-house"></i></a> <span class="h-home">Home</span></li>
-                    <li><a href="#about" class="about "><i class="fa-solid fa-user"></i></a><span class="h-about">About</span></li>
-                    <li><a href="#resume" class="resume "><i class="fa-solid fa-gear"></i></a><span class="h-resume">Resume</span></li>
-                    <li><a href="#portfolio" class="port "><i class="fa-solid fa-eye"></i></a><span class="h-port">Portfolio</span></li>
-                    <li><a href="#contact" class="contact "><i class="fa-solid fa-envelope"></i></a><span class="h-contact">Contact</span></li>
+                    <li>
+                        <a href="#home" class="home active">
+                            <i class="fa-solid fa-house"></i>
+                        </a>
+                        <span class="h-home">Home</span>
+                    </li>
+                    <li>
+                        <a href="#about" class="about ">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                        <span class="h-about">About</span>
+                    </li>
+                    <li>
+                        <a href="#resume" class="resume ">
+                            <i class="fa-solid fa-gear"></i>
+                        </a>
+                        <span class="h-resume">Resume</span>
+                    </li>
+                    <li>
+                        <a href="#portfolio" class="port ">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                        <span class="h-port">Portfolio</span>
+                    </li>
+                    <li>
+                        <a href="#contact" class="contact ">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                        <span class="h-contact">Contact</span>
+                    </li>
                 </ul>
+                <!--------- Social links---->
                 <div class="s-links">
                     <ul>
-                        <li><a href="https://www.facebook.com/tusharimran.fb" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
-                        <li><a href="https://github.com/TusharImran-Dev" target="_blank"><i class="fa-brands fa-github"></i></a></li>
-                        <li><a href="https://www.instagram.com/tushar.imran.me/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li>
+                            <a href="https://www.facebook.com/tusharimran.fb" target="_blank">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/TusharImran-Dev" target="_blank">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/tushar.imran.me/" target="_blank">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
+
             <div class="right-content">
-                <a class="chat" href="https://wa.me/8801648550599" target="_blank"><i class="fa-brands fa-rocketchat"></i>Message Me</a>
-                <a href="/assets/imgs/resume.pdf" download class="fxd-d-btn"><i class="fa-solid fa-download"></i>Download CV</a>
-                <a href="#header" class="scroll-top"><i class="fa-solid fa-circle-up"></i>Scroll Top</a>
+                <h3> Loading background . . . </h3>
+                <!----- Using php configuration file number----->
+                <a class="chat" href="https://wa.me/<?php echo $config['phone'] ?>" target="_blank">
+                    <i class="fa-brands fa-rocketchat"></i>Message Me
+                </a>
+                <a href="/assets/imgs/resume.pdf" download class="fxd-d-btn">
+                    <i class="fa-solid fa-download"></i>Download CV
+                </a>
+                <a href="#home" class="scroll-top">
+                    <i class="fa-solid fa-circle-up"></i>Scroll Top
+                </a>
                 <video autoplay muted loop id="video">
                     <source src="/assets/imgs/background.mp4" type="video/mp4">
                     Your browser does not support HTML5 video.
                 </video>
                 <div class="text">
                     <h1>Tushar Imran</h1>
-                    <p><span class="text_1">I am a <span class="color-text">Web Developer</span></span><span class="text_2">I am a <span class="color-text">Web Designer</span></span></p>
+                    <p>
+                        <span class="text_1">I am a <span class="color-text">Web Developer</span></span>
+                        <span class="text_2">I am a <span class="color-text">Web Designer</span></span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -353,15 +412,79 @@
                 </div> 
                 <div class="contact-form">
                     <h2><span>Contact</span> Form</h2>
-                    <form class="col-xl-8" action="">
-                        <input type="text" name="" id="" required placeholder="Full Name">
-                        <input type="email" name="" id="" required placeholder="Email Address">
+                    <form class="col-xl-8" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                        <input type="text" name="name" id="" required placeholder="Full Name">
+                        <input type="email" name="email" id="" required placeholder="Email Address">
                         <p>
-                            <textarea name="" id="" required placeholder="Your Message"></textarea>
+                            <textarea name="message" id="" required placeholder="Your Message"></textarea>
                         </p>
-                        <button>Send Message <i class="fa-solid fa-arrow-right"></i></button>
+                        <button name="submit"> Send Message<i class="fa-solid fa-arrow-right"></i></button>
                     </form>
+
+                    <?php 
+                        if ( isset( $_POST['submit'] ) ) {
+
+
+                            $to = $config['email'];
+                            $subject = 'Contact US Mail From ' . $config['name'];
+                            $email = isset( $_POST['email'] ) ? strip_tags( $_POST['email'] ) : '';
+                            $name = isset( $_POST['name'] ) ? strip_tags( $_POST['name'] ) : '';
+                            $message = isset( $_POST['message'] ) ? strip_tags( $_POST['message'] ) : '';
+                        
+                        
+                            $msg = '
+                            <html>
+                            <body>
+                                <table rules="all" style="border-color: #666;" cellpadding="10">
+                                    <tr style="background: #eee;">
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Message</th>
+                                    </tr>
+                                    <tr border="1">
+                                        <td>
+                                            ' . $name . '
+                                        </td>
+                                        <td>
+                                            ' . $email . '
+                                        </td>
+                                        <td>
+                                            ' . $message . '
+                                        </td>
+                                    </tr>
+                                </table>
+                            </body>
+                            </html>
+                            ';
+                        
+                            $headers  = 'MIME-Version: 1.0' . "\r\n";
+                            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                            
+
+                            // Sending email
+                            if ( mail( $to, $subject, $msg, $headers ) ) {
+                                    echo $success ='<div class="sending-email" id="email">
+                                    <div class="success">
+                                        <img src="/assets/imgs/success.png" alt="">
+                                        <p>Your mail has been sent successfully.</p>
+                                        <button id="none-btn" onclick="noneFunction()">Done</button>
+                                    </div>
+                                </div>';
+                                } else{
+                                    echo $error = "<div class='sending-email' id='email'>
+                                    <div class='error'>
+                                        <img src='/assets/imgs/error.png' alt=''>
+                                        <p>Unable to send email. Please try again.</p>
+                                        <button id= 'none-btn' onclick='noneFunction()'>ok</button>
+                                    </div>
+                                </div>";
+                                }?>
+
                 </div>
+                    <?php      
+                        }
+                    ?>
             </div>
         </div>
     </section>

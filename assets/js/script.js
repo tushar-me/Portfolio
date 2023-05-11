@@ -1,3 +1,11 @@
+//preloader
+let loader = document.getElementById("preloader");
+window.addEventListener("load", function(){
+    loader.style.display = "none";
+});
+
+
+
 /*-active nav link on scroll--*/
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('section #nav-links a')
@@ -18,3 +26,9 @@ window.onscroll = () => {
         };
     });
 };
+
+//Email sending success  button 
+
+function noneFunction() {
+    document.getElementById("email").style.display = "none";
+}
